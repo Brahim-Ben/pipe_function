@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   other_function.c                                   :+:      :+:    :+:   */
+/*   other_function_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbenaali <bbenaali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 08:04:30 by bbenaali          #+#    #+#             */
-/*   Updated: 2025/03/06 21:49:32 by bbenaali         ###   ########.fr       */
+/*   Updated: 2025/03/06 21:15:37 by bbenaali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
-char	*check_the_command(char **splited_path, char *av)
+char	*check_the_command_bonus(char **splited_path, char *av)
 {
 	char	*str;
 	int		i;
@@ -40,7 +40,7 @@ char	*check_the_command(char **splited_path, char *av)
 	return (str);
 }
 
-int	check_the_command_two(char **splited_path, char **arg)
+int	check_the_command_two_bonus(char **splited_path, char **arg)
 {
 	int		i;
 	char	*str;
@@ -63,7 +63,7 @@ int	check_the_command_two(char **splited_path, char **arg)
 	return (i);
 }
 
-int	check_the_command_one(char **env, char *av)
+int	check_the_command_one_bonus(char **env, char *av)
 {
 	char	**arg;
 	int		count;
@@ -79,7 +79,7 @@ int	check_the_command_one(char **env, char *av)
 		return (for_free(arg), for_free(splited_path), 0);
 	}
 	count = ft_count_wrd(splited_path);
-	i = check_the_command_two(splited_path, arg);
+	i = check_the_command_two_bonus(splited_path, arg);
 	for_free(splited_path);
 	for_free(arg);
 	if (count == i)

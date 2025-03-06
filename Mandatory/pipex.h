@@ -6,7 +6,7 @@
 /*   By: bbenaali <bbenaali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:37:05 by bbenaali          #+#    #+#             */
-/*   Updated: 2025/03/04 21:51:58 by bbenaali         ###   ########.fr       */
+/*   Updated: 2025/03/06 21:54:43 by bbenaali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ void	for_close_files(int fd2, int *fd, char **argg, char **splited_path);
 void	error_dup(void);
 void	error_malloc(void);
 int		ft_count_wrd(char **s);
+void	pip_bonus(int ac, char *av[], char **env);
 
 #endif

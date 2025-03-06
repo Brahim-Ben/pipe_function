@@ -1,52 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbenaali <bbenaali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 14:53:00 by bbenaali          #+#    #+#             */
-/*   Updated: 2025/03/06 21:53:07 by bbenaali         ###   ########.fr       */
+/*   Created: 2024/12/22 08:07:04 by bbenaali          #+#    #+#             */
+/*   Updated: 2025/03/06 21:45:13 by bbenaali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "get_next_line_bonus.h"
 
-void	ft_putstr(char *s)
-{
-	int	i;
-
-	i = 0;
-	write (1, "zsh: command not found: ", 25);
-	while (s[i] != '\0')
-	{
-		write (1, &s[i], 1);
-		i++;
-	}
-	write(1, "\n", 1);
-}
-
-static size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-static char	*ft_strdup(const char *s1)
+char	*ft_strdup(char *s1)
 {
 	int		i;
-	size_t	len;
+	int		len;
 	char	*copy;
 
-	if (!s1)
-		return (NULL);
 	len = ft_strlen(s1);
 	i = 0;
-	copy = malloc (sizeof(char) * (len + 1));
+	copy = (char *)malloc (sizeof(char) * (len + 1));
 	if (copy == NULL)
 		return (NULL);
 	while (s1[i] != '\0')
@@ -58,21 +32,10 @@ static char	*ft_strdup(const char *s1)
 	return (copy);
 }
 
-static void	ft_strcat(char *dest, char const *src)
-{
-	while (*src != '\0')
-	{
-		*dest = *src;
-		dest++;
-		src++;
-	}
-	*dest = '\0';
-}
-
 char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t	len;
-	size_t	i;
+	int		len;
+	int		i;
 	char	*s3;
 
 	if (!s1 && !s2)
@@ -82,11 +45,48 @@ char	*ft_strjoin(char *s1, char *s2)
 	else if (!s2)
 		return (ft_strdup(s1));
 	len = ft_strlen(s1) + ft_strlen(s2);
-	s3 = malloc(sizeof(char) * (len + 1));
+	s3 = (char *)malloc(sizeof(char) * (len + 1));
 	if (s3 == NULL)
 		return (NULL);
 	ft_strcat(s3, s1);
 	i = ft_strlen(s3);
 	ft_strcat(&s3[i], s2);
 	return (s3);
+}
+
+char	*find_new_line(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == '\n')
+			return ((char *)&s[i]);
+		i++;
+	}
+	return (NULL);
+}
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
+
+void	ft_strcat(char *dest, char *src)
+{
+	int	i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
 }
